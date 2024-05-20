@@ -1,0 +1,62 @@
+import os 
+import csv
+
+# Get the directory of the currently running script (Main.py)
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+# Construct the path to the CSV file using the relative path from the script's directory
+mypoll_csv = os.path.join(script_dir, 'Resources', 'election_data.csv')
+
+print(" IIIIIIIIIIIII  This is the script's directory IIIIIIIIIIIIIII ")
+print(script_dir)
+print("%%%%%%%%%%%%% This is the file's location %%%%%%%%%%")
+print(mypoll_csv)
+print("*************** This is the Current Working Directory ****************")
+print (os.getcwd())
+
+# Check if the file exists and read it
+if os.path.exists(mypoll_csv):
+    print("File exists.")
+
+    # Read the CSV file if it exists
+    with open(mypoll_csv) as csvfile:
+
+        csvreader = csv.reader(csvfile, delimiter=',')
+        
+        print(csvreader)
+
+        csv_header = next(csvreader)
+        print(f"CSV Header:")
+        print(csv_header)
+
+        total_votes = 0
+        count_votes = 0
+        
+        candidates_and_votes = {}
+
+        for row in csvreader:
+            total_votes = total_votes + 1
+            candidate = row[2]
+            
+            
+            if candidate in candidates_and_votes:
+                candidates_and_votes[candidate] = candidates_and_votes[candidate] + 1
+            else:
+                candidates_and_votes[candidate] = 1
+                
+
+    print (f"\n ELECTION RESULTS\n--------------------------------------------------") 
+    print(f"TOTAL VOTES: {total_votes}\n--------------------------------------------------")
+
+    percentage = 0
+
+    for cand, votes in candidates_and_votes.items():
+        percentage = (votes/total_votes)*100
+        print(f"{cand} -> {votes} votes -> {round(percentage,2)}%\n")
+    
+    winner = max(candidates_and_votes, key=candidates_and_votes.get)
+    print (f"--------------------------------------------------") 
+    print(f"the winner is {winner} with {candidates_and_votes[winner]} votes\n")
+
+
+   

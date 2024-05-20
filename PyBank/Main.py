@@ -30,10 +30,11 @@ if os.path.exists(mybudget_csv):
         print(csv_header)
 
         months = 0
-        cum_profits = 0
+        
         cum_changes = 0
         changes = []
         first_row = next(csvreader) #positioning in the first row 
+        cum_profits = int(first_row[1])
         initial_pl = int(first_row[1])#captures the first profit and loss value
         #print (initial_pl)  # wanted to verify if the value was properly captured
 
@@ -47,7 +48,7 @@ if os.path.exists(mybudget_csv):
             #print (f"change: {change}") # used this as a control line to verify the stored value in the list
             changes.append(change)
             cum_changes = cum_changes + change
-            initial_pl = final_pl # initial value of next month is the ebd value of current month
+            initial_pl = final_pl # initial value of next month is the end value of current month
 
         length_ch = len(changes)
         average = round(cum_changes / length_ch,2)
