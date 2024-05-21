@@ -14,13 +14,16 @@ print(mypoll_csv)
 print("*************** This is the Current Working Directory ****************")
 print (os.getcwd())
 
+# Path to save the analysis text file
+output_txt = os.path.join(script_dir, 'Analysis', 'analysis.txt')
+os.makedirs(os.path.dirname(output_txt), exist_ok=True)
+
 # Check if the file exists and read it
 if os.path.exists(mypoll_csv):
     print("File exists.")
 
     # Read the CSV file if it exists
     with open(mypoll_csv) as csvfile:
-
         csvreader = csv.reader(csvfile, delimiter=',')
         
         print(csvreader)
@@ -45,18 +48,39 @@ if os.path.exists(mypoll_csv):
                 candidates_and_votes[candidate] = 1
                 
 
-    print (f"\n ELECTION RESULTS\n--------------------------------------------------") 
-    print(f"TOTAL VOTES: {total_votes}\n--------------------------------------------------")
+
+    results = (
+        f"\nELECTION RESULTS\n"
+        f"--------------------------------------------------\n"
+        f"TOTAL VOTES: {total_votes}\n"
+        f"--------------------------------------------------\n"
+    )
+
 
     percentage = 0
 
     for cand, votes in candidates_and_votes.items():
         percentage = (votes/total_votes)*100
-        print(f"{cand} -> {votes} votes -> {round(percentage,2)}%\n")
+        results += f"{cand} -> {votes} votes -> {round(percentage, 2)}%\n"
+
     
     winner = max(candidates_and_votes, key=candidates_and_votes.get)
-    print (f"--------------------------------------------------") 
-    print(f"the winner is {winner} with {candidates_and_votes[winner]} votes\n")
+    results += (
+        f"--------------------------------------------------\n"
+        f"The winner is {winner} with {candidates_and_votes[winner]} votes\n"
+    )
+
+    # Print the results to the terminal
+    print(results)
+
+    # Write the results to the text file
+    with open(output_txt, 'w') as txtfile:
+        txtfile.write(results)
+
+    print(f"Results have been written to {output_txt}")
+
+else:
+    print("File does not exist.")
 
 
    

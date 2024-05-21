@@ -1,5 +1,7 @@
+--------------------------------------------------
 TOTAL MONTHS: 85
 TOTAL REVENUE: $22,564,198
 AVERAGE CHANGE: $-8,311.11
 GREATEST INCREASE IN PROFITS: $1,862,002
 GREATEST DECREASE IN PROFITS: $-1,825,558
+--------------------------------------------------
