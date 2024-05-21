@@ -7,12 +7,12 @@ script_dir = os.path.dirname(os.path.realpath(__file__))
 # Construct the path to the CSV file using the relative path from the script's directory
 mypoll_csv = os.path.join(script_dir, 'Resources', 'election_data.csv')
 
-print(" IIIIIIIIIIIII  This is the script's directory IIIIIIIIIIIIIII ")
-print(script_dir)
-print("%%%%%%%%%%%%% This is the file's location %%%%%%%%%%")
-print(mypoll_csv)
-print("*************** This is the Current Working Directory ****************")
-print (os.getcwd())
+#print(" IIIIIIIIIIIII  This is the script's directory IIIIIIIIIIIIIII ")
+#print(script_dir)
+#print("%%%%%%%%%%%%% This is the file's location %%%%%%%%%%")
+#print(mypoll_csv)
+#print("*************** This is the Current Working Directory ****************")
+#print (os.getcwd())
 
 # Path to save the analysis text file
 output_txt = os.path.join(script_dir, 'Analysis', 'analysis.txt')
@@ -26,11 +26,11 @@ if os.path.exists(mypoll_csv):
     with open(mypoll_csv) as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',')
         
-        print(csvreader)
+        #print(csvreader)
 
         csv_header = next(csvreader)
-        print(f"CSV Header:")
-        print(csv_header)
+       # print(f"CSV Header:")
+       
 
         total_votes = 0
         count_votes = 0
