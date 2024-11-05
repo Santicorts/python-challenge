@@ -77,6 +77,6 @@ The results of the election analysis will be printed to the terminal and saved i
 
 ## Author
 
-This code was authored by me usi g the material learned in class. During the development of this project, I investigated various Python functionalities to export the results to a text file. I used resources such as [W3Schools](https://www.w3schools.com/) for Python functions and ChatGPT for additional concepts like storing multiple lines in a results variable.
+This code was authored by me usi g the material learned in class. During the development of this project, I investigated various Python functionalities to export the results to a text file. I used resources such as [W3Schools](https://www.w3schools.com/) for Python functions and additional concepts like storing multiple lines in a results variable.
 
 
